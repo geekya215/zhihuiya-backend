@@ -1,4 +1,4 @@
-package io.geekya215.zhihuiya;
+package io.geekya215.zhihuiya.util;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;

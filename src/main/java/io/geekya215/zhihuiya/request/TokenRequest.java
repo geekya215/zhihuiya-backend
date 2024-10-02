@@ -1,4 +1,4 @@
-package io.geekya215.zhihuiya;
+package io.geekya215.zhihuiya.request;
 
 import java.util.Objects;
 
