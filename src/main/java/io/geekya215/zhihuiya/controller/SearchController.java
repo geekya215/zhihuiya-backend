@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/search")
+@CrossOrigin
 public class SearchController {
     private final SearchService searchService;
 
@@ -13,13 +14,23 @@ public class SearchController {
         this.searchService = searchService;
     }
 
-    @PostMapping
+    @PostMapping("/patents")
     public Object queryPatent(
             @RequestHeader("Authorization") String authorization,
             @RequestBody QuerySearchRequest request,
             @RequestParam String apikey
     ) {
         String token = authorization.split(" ")[1];
-        return searchService.getSimpleBibliography(request, apikey, token);
+        return searchService.querySearchPatent(request, apikey, token);
+    }
+
+    @PostMapping("/bibliography")
+    public Object getSimpleBibliography(
+            @RequestHeader("Authorization") String authorization,
+            @RequestParam String apikey,
+            @RequestParam("patent_id") String patentId
+    ) {
+        String token = authorization.split(" ")[1];
+        return searchService.getSimpleBibliography(patentId, apikey, token);
     }
 }
