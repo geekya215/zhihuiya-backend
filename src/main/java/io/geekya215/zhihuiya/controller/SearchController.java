@@ -20,6 +20,6 @@ public class SearchController {
             @RequestParam String apikey
     ) {
         String token = authorization.split(" ")[1];
-        return searchService.querySearchPatent(request, apikey, token);
+        return searchService.getSimpleBibliography(request, apikey, token);
     }
 }
